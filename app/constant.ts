@@ -11,6 +11,7 @@ export const RUNTIME_CONFIG_DOM = "danger-runtime-config";
 export const DEFAULT_API_HOST = "https://api.nextchat.dev";
 export const OPENAI_BASE_URL = "https://api.openai.com";
 export const ANTHROPIC_BASE_URL = "https://api.anthropic.com";
+export const GROQ_BASE_URL = "https://api.groq.com";
 
 export const GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/";
 
@@ -70,14 +71,22 @@ export enum ServiceProvider {
   Azure = "Azure",
   Google = "Google",
   Anthropic = "Anthropic",
+  Groq = "Groq",
 }
 
 export enum ModelProvider {
   GPT = "GPT",
   GeminiPro = "GeminiPro",
   Claude = "Claude",
+  Groq = "Groq",
 }
 
+export const GroqPath = {
+  ChatPath: "v1/chat/completions",
+  UsagePath: "dashboard/billing/usage",
+  SubsPath: "dashboard/billing/subscription",
+  ListModelPath: "v1/models",
+};
 export const Anthropic = {
   ChatPath: "v1/messages",
   ChatPath1: "v1/complete",
@@ -152,6 +161,13 @@ const openaiModels = [
   "gpt-4-turbo-2024-04-09",
 ];
 
+const groqModels = [
+  "llama3-70b-8192",
+  "llama3-8b-8192",
+  "mixtral-8x7b-32768",
+  "gemma-7b-it",
+];
+
 const googleModels = [
   "gemini-1.0-pro",
   "gemini-1.5-pro-latest",
@@ -195,6 +211,15 @@ export const DEFAULT_MODELS = [
       id: "anthropic",
       providerName: "Anthropic",
       providerType: "anthropic",
+    },
+  })),
+  ...groqModels.map((name) => ({
+    name,
+    available: true,
+    provider: {
+      id: "groq",
+      providerName: "Groq",
+      providerType: "groq",
     },
   })),
 ] as const;
