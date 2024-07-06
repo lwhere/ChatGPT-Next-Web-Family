@@ -48,9 +48,9 @@ export const DEFAULT_CONFIG = {
   models: DEFAULT_MODELS as any as LLMModel[],
 
   modelConfig: {
-    model: "gpt-3.5-turbo" as ModelType,
+    model: "gpt-4o" as ModelType,
     providerName: "Openai" as ServiceProvider,
-    temperature: 0.5,
+    temperature: 0.01,
     top_p: 1,
     max_tokens: 4000,
     presence_penalty: 0,
